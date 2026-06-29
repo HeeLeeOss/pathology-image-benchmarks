@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-license-001",
+  "title": "Source allow-list schema + open-only licensing-gate policy",
+  "project": "pathology-image-benchmarks",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "An open whole-slide-image benchmark suite for computational pathology must build only on OPEN-ACCESS cancer imaging (open-tier TCGA diagnostic/tissue slides via NCI GDC; CPTAC and other CC-licensed collections via TCIA; CC0 challenge sets like Camelyon). Controlled-access and identifiable patient data (dbGaP, EGA, individual-level genomics, PHI) are categorically OUT OF SCOPE, and non-commercial assets (COSMIC, OncoKB, certain foundation-model weights) must be excluded from the core path. Before any pixel is ingested, the project needs a source allow-list and an open-only licensing-gate policy that admits a collection only after its open-access status and reuse license are verified and recorded. See PLAN.md (Data, licensing & compliance).",
+  "objective": "Define the sources/allowlist.yml schema and the open-only licensing-gate policy: the fields recorded per collection (title, custodian/archive, URL, accession/collection ID, format, open-access tier confirmation, reuse license, rights analysis, retrieval date, checksum, status), the categorical rejection of controlled-access/identifiable data, the exclusion of non-commercial assets from the core path, and the requirement that no source is touched until its entry is approved by the license reviewer.",
+  "acceptanceCriteria": [
+    "sources/allowlist.yml schema defines all required per-collection fields plus status: approved|rejected|pending.",
+    "Policy text categorically rejects controlled-access/identifiable data (dbGaP, EGA, individual-level genomics, PHI).",
+    "Policy excludes non-commercial assets (COSMIC, OncoKB, non-commercial model weights) from the core path; any optional use must be segregated and labeled non-commercial.",
+    "Per-collection (not source-family) license verification is required, since TCIA terms vary per collection.",
+    "Rule stated: no pixel is touched until the collection's allow-list entry is approved by the license reviewer.",
+    "Every collection entry reserves provenance fields (retrieval date, checksum, license) for the downstream provenance model."
+  ],
+  "resources": [
+    "planning/projects/pathology-image-benchmarks/PLAN.md",
+    "CLAUDE.md",
+    "docs/good-deed-definition.md",
+    "https://portal.gdc.cancer.gov/",
+    "https://www.cancerimagingarchive.net/"
+  ],
+  "output": "A licensing-gate policy document plus the sources/allowlist.yml schema (committed via PR) defining open-only admission, controlled-access exclusion, non-commercial exclusion, and per-collection license verification.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

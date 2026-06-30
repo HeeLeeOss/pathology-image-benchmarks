@@ -1,0 +1,39 @@
+{
+  "id": "pathology-image-benchmarks-data-002",
+  "title": "Second collection/task (stain-norm robustness or external-site eval)",
+  "project": "pathology-image-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "After the first benchmark task is stable, M3 expands coverage by adding a second approved collection that tests either stain-normalization robustness (different staining protocols) or external-site generalization (held-out scanner/site not seen in training). This tests a realistic failure mode for pathology models and adds scientific value beyond in-distribution accuracy. The second collection must pass the full license gate + de-id re-scan before any derived artifact is produced. 100% provenance must be maintained. See PLAN.md (M3 Reproducibility & expansion, External-site / stain-normalization robustness evaluation).",
+  "objective": "Identify, gate, ingest, and tile a second approved open collection — either for a stain-normalization robustness evaluation (different staining protocol) or an external-site generalization evaluation (held-out scanner/site). The collection must pass the sources/allowlist.yml license gate and the de-id re-scan before any derived artifact is produced. Publish results honestly (split ID, seeds, variance, preprocessing hash, compute provenance) showing either stain-normalization robustness or external-site generalization performance.",
+  "acceptanceCriteria": [
+    "The second collection passes the full license gate: a new sources/allowlist.yml entry reaches status: approved before any ingest.",
+    "The de-id re-scan is run on the second collection (100% screened); any positive is quarantined; results reported.",
+    "100% provenance is maintained: every slide in the second collection has a manifest record with all required fields.",
+    "The evaluation adds either a stain-normalization robustness assessment or an external-site (held-out scanner/site) generalization evaluation.",
+    "Results are reported honestly with split ID, seeds, across-seed variance, preprocessing hash, and compute provenance.",
+    "A datasheet for the second dataset is produced and committed, carrying the 'not for clinical or diagnostic use; research only' notice.",
+    "Domain-reviewer and license-reviewer sign-off are recorded in the governance log."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-splits-001.json",
+    "tasks/pathology-image-benchmarks-license-002.json",
+    "tasks/pathology-image-benchmarks-deid-001.json",
+    "https://portal.gdc.cancer.gov/",
+    "https://www.cancerimagingarchive.net/"
+  ],
+  "output": "A second approved collection ingested with full provenance + de-id re-scan, tiled, with an evaluation (stain-norm robustness or external-site generalization) and a datasheet, committed via PR.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

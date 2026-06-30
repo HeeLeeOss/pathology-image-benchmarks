@@ -1,0 +1,37 @@
+{
+  "id": "pathology-image-benchmarks-release-001",
+  "title": "Public versioned/DOI release + methods review",
+  "project": "pathology-image-benchmarks",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "M4 is the final milestone and Definition of Shipped: a public, versioned, DOI-able release that someone outside the team actually uses. The release bundle must include all artifacts with provenance and upstream attribution intact: manifests, splits, harness, baselines, datasheets, model cards, the license/provenance ledger, and a citation file. A methods review (domain reviewer + maintainer) must be complete before release. Every artifact must carry the 'not for clinical or diagnostic use' notice. The release gates the adopter/partner task and the sustainability plan. See PLAN.md (M4, Release artifacts).",
+  "objective": "Prepare and publish a versioned, DOI-able release bundle: package all artifacts (manifests, splits, evaluation harness, baseline code and results, datasheets, model cards, license/provenance ledger, citation file) with upstream attribution preserved (TCGA citation requirement, CC-BY collection attribution). Complete the methods review (domain reviewer + maintainer sign-off). Verify that every artifact carries the 'not for clinical or diagnostic use; research only' notice. Assign a DOI (e.g. via Zenodo or equivalent).",
+  "acceptanceCriteria": [
+    "A versioned release bundle is packaged and published with a DOI: manifests, splits, evaluation harness, baseline code and results, datasheets, model cards, license/provenance ledger, and citation file.",
+    "Upstream attribution is preserved in the bundle: TCGA citation requirement noted where applicable; CC-BY collection attribution recorded.",
+    "Methods review is complete: domain-reviewer and maintainer sign-off recorded on the task definitions, splits, results, and release artifacts.",
+    "Every model card and dataset artifact in the release bundle carries the 'not for clinical or diagnostic use; research only' notice; CI not-for-clinical-use linter passes.",
+    "The license/provenance gate is verified at release time: all sources in the release carry approved allow-list entries with retrieval-date and license snapshots.",
+    "A citation file (CITATION.cff or equivalent) is included in the bundle.",
+    "The release is linked from the project README with DOI."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-repro-001.json",
+    "tasks/pathology-image-benchmarks-baseline-001.json",
+    "tasks/pathology-image-benchmarks-datasheet-001.json"
+  ],
+  "output": "A public versioned/DOI release on Zenodo (or equivalent) containing all benchmark artifacts, with methods review complete, upstream attribution preserved, and every artifact carrying the not-for-clinical-use notice.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

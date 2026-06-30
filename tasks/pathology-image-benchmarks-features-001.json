@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-features-001",
+  "title": "Precomputed tile-feature release (license-permitting)",
+  "project": "pathology-image-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Precomputed tile features (embeddings from a tile encoder) remove the need for GPU compute from the benchmarking loop, lowering the barrier for researchers without GPU access. However, releasing precomputed features is only permissible where the source collection's license allows redistribution of derived artifacts — this must be verified per-collection in sources/allowlist.yml. Features derived from non-commercial model weights cannot be included in the core, permissive path. The provenance chain from tile to source slide must be maintained in every feature record. This is a large, future-backlog task gated on license verification per collection.",
+  "objective": "Release precomputed tile features for collections whose source license permits redistribution of derived artifacts: verify per-collection redistribution rights in sources/allowlist.yml, compute tile embeddings using a permissively-licensed tile encoder, maintain provenance from feature to tile to source slide (source collection, accession, license, preprocessing hash, encoder name and license, container digest), and publish the feature dataset with a datasheet. Features from non-commercial encoders must be excluded from the core release or clearly labeled and segregated.",
+  "acceptanceCriteria": [
+    "Precomputed features are only released for collections whose sources/allowlist.yml entry explicitly records that derived-artifact redistribution is permitted.",
+    "Every feature record carries full provenance: source collection, slide accession, license, preprocessing hash, tile coordinates, encoder name and license, container digest.",
+    "Features derived from non-commercial or gated encoder weights are excluded from the core permissive release or clearly labeled non-commercial in a segregated artifact.",
+    "A datasheet for the feature dataset documents: source collection(s), encoder used and its license, preprocessing config, provenance chain, intended uses (research benchmarking only), prohibited uses (clinical/diagnostic), and the 'not for clinical or diagnostic use; research only' notice.",
+    "The CI provenance-completeness gate passes on the feature manifest.",
+    "License-reviewer sign-off on the redistribution determination for each source collection is recorded."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-tiling-001.json",
+    "tasks/pathology-image-benchmarks-license-002.json",
+    "tasks/pathology-image-benchmarks-prov-001.json"
+  ],
+  "output": "A precomputed tile-feature dataset (where source license permits redistribution) with full provenance manifests, a datasheet, and license-reviewer sign-off, committed via PR.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

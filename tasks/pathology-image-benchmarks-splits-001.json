@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-splits-001",
+  "title": "Site-stratified, patient-grouped splits + site-confounding audit",
+  "project": "pathology-image-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "TCGA whole-slide images encode strong site/scanner signatures; a naive random split or patient-level-only split still leaks submitting site across the train/test boundary, inflating apparent generalization (Howard et al., 2021). This is the primary methodological problem the benchmark exists to fix. Leakage-safe, site-stratified splits are a primary artifact of the project — not an afterthought. The splits must be fixed, seeded, versioned, and published; a site-confounding audit must prove the splits do not trivially leak site. Domain-reviewer sign-off is required before the splits are published. This task is gated on M2 entry (domain reviewer secured by 2026-08-31). See PLAN.md (Splits + leakage control).",
+  "objective": "Produce site-stratified, patient-grouped train/val/test splits for the tiled dataset: ensure no patient straddles the train/test boundary, and allocate submitting site so that site is not leaked across the split boundary. Fix, seed, version, and publish the split files. Conduct a site-confounding audit: train a probe to predict submitting site from model inputs and report recoverability (e.g. AUC) on the test split, with interpretation; surface, not hide, residual confounding. Record domain-reviewer sign-off on the splits.",
+  "acceptanceCriteria": [
+    "Splits are site-stratified and patient-grouped: no patient straddles the train/test boundary, and submitting site is allocated so the split does not leak site across the train/test boundary.",
+    "A site-confounding audit trains a site-prediction probe on the test split and reports recoverability (e.g. AUC) with interpretation; residual confounding is surfaced and documented, not hidden.",
+    "Split files are fixed, seeded (seed value recorded), versioned, and published.",
+    "Domain-reviewer sign-off on the splits is recorded in the governance log.",
+    "Split files are committed as versioned artifacts (e.g. splits/v1/train.json, splits/v1/test.json) with the seed and split-ID recorded.",
+    "The site-confounding audit report is committed alongside the splits."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-tiling-001.json",
+    "https://doi.org/10.1038/s41467-021-24698-1"
+  ],
+  "output": "Published, versioned, seeded split files (train/val/test) with a site-confounding audit report, committed via PR, with domain-reviewer sign-off recorded.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

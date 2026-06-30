@@ -1,0 +1,34 @@
+{
+  "id": "pathology-image-benchmarks-prov-001",
+  "title": "Provenance/manifest + results schema (countable record unit defined)",
+  "project": "pathology-image-benchmarks",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The benchmark's integrity depends on 100% provenance coverage: every slide record and every result record must carry its full provenance. To make this CI-checkable, the exact fields of each record type must be fixed and a 'countable record unit' defined before any data is ingested. The provenance model covers manifest records (per-slide) and results records (per-run). This spec gates the CI provenance-completeness test in pathology-image-benchmarks-scaffold-001. See PLAN.md (Provenance model) and TASKS.md (pathology-image-benchmarks-prov-001 acceptance criteria).",
+  "objective": "Fix the fields for the per-slide manifest record and the per-result record, and explicitly define the countable 'record' unit so the 100%-provenance CI gate is mechanically checkable. Manifest record must include: source collection, accession ID, license, scanner/vendor, MPP/objective power, dimensions, de-id status (deidStatus), retrieval date, and checksum. Results record must include: split ID, seed(s), across-seed variance, preprocessing hash, container digest, and compute provenance.",
+  "acceptanceCriteria": [
+    "Per-slide manifest record fields are fixed: source collection, accession ID, license, scanner/vendor, MPP/objective power, slide dimensions, deidStatus (passed|quarantined|manual-cleared), retrieval date, and checksum.",
+    "Per-result record fields are fixed: split ID, seed(s), across-seed variance, preprocessing hash, container digest, and compute provenance.",
+    "The countable 'record' unit is explicitly defined (e.g. one entry per slide for manifests; one entry per model-run/split combination for results) so the CI gate is mechanically checkable.",
+    "Schema is expressed as a code-validatable artifact (JSON Schema, TypeScript interface, or equivalent) committed via PR.",
+    "Every derived tile or feature artifact is specified to inherit provenance and source license from its parent slide record.",
+    "A note documents that a derived artifact referencing a source not approved in the allow-list will fail CI."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-license-001.json"
+  ],
+  "output": "A committed schema definition (JSON Schema or TypeScript types) and a short spec document for the per-slide provenance manifest record and the per-result record, with the countable record unit explicitly defined.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

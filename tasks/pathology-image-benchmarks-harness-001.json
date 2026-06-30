@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-harness-001",
+  "title": "Submission / held-out scoring harness",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The benchmark's evaluation integrity depends on a submission harness that scores predictions against held-out ground truth without leaking labels to participants. The harness must enforce the results schema (requiring split ID, seed(s), preprocessing hash, and compute provenance) and produce a structured result record for each evaluated submission. This prevents single-seed, unpinned, or undocumented claims from being submitted. The harness is a primary artifact of M2. See PLAN.md (Benchmark task + evaluation harness, Honest-reporting-by-construction results schema).",
+  "objective": "Implement the submission and held-out scoring harness: accept a prediction file in the defined submission format, score it against the held-out test-set labels using the metric(s) from pathology-image-benchmarks-task-001, validate that the submission carries required metadata (split ID, seed(s), preprocessing hash, compute provenance), and produce a structured result record. The harness must not expose held-out labels to the submitter. Enforces the honest-reporting-by-construction results schema.",
+  "acceptanceCriteria": [
+    "The harness accepts a prediction file in the defined submission format and scores it against held-out test labels using the metric(s) specified in pathology-image-benchmarks-task-001.",
+    "The harness validates that submissions carry required metadata: split ID, seed(s), preprocessing hash, and compute provenance; missing fields cause rejection, not silent scoring.",
+    "Held-out ground-truth labels are not exposed to the submitter at any point during the scoring process.",
+    "The harness produces a structured result record conforming to the results schema from pathology-image-benchmarks-prov-001.",
+    "The harness is implemented in the agent-neutral core (TypeScript/ESM) or as a documented Python adapter, consistent with the Elyos architecture rule.",
+    "pnpm build && pnpm test && pnpm lint pass; CI provenance gate passes on harness result records."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-task-001.json",
+    "tasks/pathology-image-benchmarks-prov-001.json",
+    "tasks/pathology-image-benchmarks-splits-001.json"
+  ],
+  "output": "A submission and held-out scoring harness PR: prediction ingestion, metric computation, submission metadata validation, and structured result-record output, with passing CI gates.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-deid-001",
+  "title": "WSI de-identification re-scan policy + label/macro PHI quarantine spec",
+  "project": "pathology-image-benchmarks",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Whole-slide image files (SVS, DICOM, OME-TIFF) can carry burned-in patient identifiers in their label images, macro images, associated/auxiliary images, embedded metadata fields (e.g. SVS ImageDescription, DICOM tags), and even filenames. Even nominally de-identified public collections (TCGA, CPTAC) warrant a defensive re-scan before any derived tile, thumbnail, or feature is produced or redistributed. This policy must be defined before any collection is ingested (M0, cold-start) and must specify screening scope, deidStatus values, the quarantine workflow, and the rule that no derived artifact is produced from an unscanned slide. See PLAN.md (De-identification stance).",
+  "objective": "Author the WSI de-identification re-scan policy and label/macro PHI quarantine specification: define what is extracted and screened (label image, macro image, associated/auxiliary images, embedded metadata, filenames), the screening methods (OCR + text/face heuristics), the deidStatus states (passed|quarantined|manual-cleared), the quarantine workflow (auto-quarantine on any positive, manual-review SLA, nothing redistributed unscanned), and the hard rule that slide-label and macro images are never published.",
+  "acceptanceCriteria": [
+    "Policy specifies extraction and screening of each WSI label image, macro image, and associated/auxiliary images using OCR and text/face heuristics.",
+    "Policy specifies scanning of filenames and embedded metadata fields (SVS ImageDescription, DICOM tags) for identifiers.",
+    "Three deidStatus values are defined: passed, quarantined, manual-cleared; semantics and transitions are specified.",
+    "Quarantine workflow defined: any positive hit triggers automatic quarantine, a manual-review SLA is stated, and the slide is excluded from all derived artifacts until cleared.",
+    "Hard rule stated: no derived artifact (tile, thumbnail, feature) is produced or redistributed from an unscanned slide.",
+    "Hard rule stated: slide-label and macro images are never published in any artifact.",
+    "Policy is structured as a committed document (e.g. gate/deid/policy.md or docs/deid-policy.md) with a PR."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "https://portal.gdc.cancer.gov/",
+    "https://www.cancerimagingarchive.net/"
+  ],
+  "output": "A WSI de-identification re-scan policy document (committed via PR) specifying screening scope, methods, deidStatus states, quarantine workflow, manual-review SLA, and the no-unscanned-derivative and no-label/macro-publication rules.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

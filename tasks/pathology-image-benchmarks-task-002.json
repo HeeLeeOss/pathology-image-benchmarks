@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-task-002",
+  "title": "Slide-level grading/subtyping task (research-only label)",
+  "project": "pathology-image-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "A slide-level grading or subtyping task (e.g. Gleason grading for prostate, histological subtype for lung, grade group for breast) is a natural second benchmark task, extending beyond tile-level classification. Labels must be research-only aggregate annotations (not clinical diagnostic reports for identifiable patients); label provenance must be fully documented. This is a large, backlog task gated on M2 completion and domain-reviewer availability for the specific cancer type. The 'not for clinical use' framing is especially important here given the proximity to clinical grading tasks. See PLAN.md (Open questions: which first cohort/task).",
+  "objective": "Define and produce a slide-level grading or subtyping benchmark task: select a cancer type with high-quality open-access slide-level annotations (e.g. TCGA PANDA/prostate Gleason grades, TCGA lung subtype), document label provenance (annotation source, annotator credentials, label definition, aggregate/research-only framing), produce leakage-safe splits (site-stratified, patient-grouped per pathology-image-benchmarks-splits-001 methodology), and document the task spec with metric(s) and evaluation protocol. Research-only framing required; domain-reviewer sign-off required.",
+  "acceptanceCriteria": [
+    "A slide-level grading or subtyping task is fully specified: cancer type, label definition, label provenance (annotation source, annotator credentials, aggregate/research-only), allowed data, and metric(s).",
+    "Labels are research-only aggregate annotations; no individual-level clinical data is included; label provenance is fully documented.",
+    "Leakage-safe, site-stratified, patient-grouped splits are produced following the same methodology as pathology-image-benchmarks-splits-001.",
+    "The task is explicitly framed as research benchmarking, not clinical grading: 'not for clinical or diagnostic use; research only' is stated in the task spec and datasheet.",
+    "A datasheet for the task dataset is produced and committed.",
+    "Domain-reviewer sign-off on the task definition, labels, and splits is recorded in the governance log."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-splits-001.json",
+    "tasks/pathology-image-benchmarks-task-001.json",
+    "https://portal.gdc.cancer.gov/"
+  ],
+  "output": "A slide-level grading/subtyping task dataset with research-only label provenance, leakage-safe splits, a frozen task spec, a datasheet, and domain-reviewer sign-off, committed via PR.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

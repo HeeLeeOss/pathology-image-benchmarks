@@ -1,0 +1,38 @@
+{
+  "id": "pathology-image-benchmarks-seg-001",
+  "title": "Tissue/tumor segmentation task (CC0 Camelyon control)",
+  "project": "pathology-image-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Camelyon16/17 (lymph-node metastasis detection in WSIs) is released under CC0, making it suitable as a control task where derived artifacts can also be released CC0. Adding a tissue or tumor segmentation task using the Camelyon data allows the benchmark to test a different problem structure (pixel/patch-level segmentation vs slide-level classification) and provides a freely redistributable derived dataset. The CC0 license must be verified for current Camelyon terms before any ingest. The full license gate + de-id re-scan still applies. Domain-reviewer sign-off required on the task definition and splits.",
+  "objective": "Define and produce a tissue/tumor segmentation benchmark task using Camelyon16 or Camelyon17 (CC0): verify the current CC0 license terms, add an approved allow-list entry, run the de-id re-scan on the ingested slides, tile and produce segmentation masks following the standard pipeline, define a segmentation task spec (inputs, label definition, metric e.g. FROC or AUROC at the patch/slide level), produce leakage-safe splits, and commit derived artifacts under CC0 where the license confirms CC0 derivability.",
+  "acceptanceCriteria": [
+    "Current Camelyon16/17 CC0 license terms are verified and an approved allow-list entry with license: CC0 is committed in sources/allowlist.yml.",
+    "De-id re-scan is run on the Camelyon batch (100% screened); any positive is quarantined; a quarantine report is published.",
+    "A segmentation task spec is defined: inputs, label definition (tumor mask provenance), allowed data, and primary metric (e.g. FROC or AUROC).",
+    "Leakage-safe, patient-grouped splits are produced (site stratification applied where Camelyon data has multi-site structure).",
+    "Derived artifacts (tiles, masks) are committed or referenced under CC0 where the Camelyon license confirms CC0 derivability.",
+    "A datasheet for the Camelyon-derived dataset carries the 'not for clinical or diagnostic use; research only' notice.",
+    "Domain-reviewer and license-reviewer sign-off are recorded in the governance log."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-tiling-001.json",
+    "tasks/pathology-image-benchmarks-deid-001.json",
+    "https://camelyon16.grand-challenge.org/",
+    "https://camelyon17.grand-challenge.org/"
+  ],
+  "output": "A tissue/tumor segmentation task dataset (Camelyon, CC0) with verified license, de-id report, task spec, splits, datasheet, and domain-reviewer sign-off, committed via PR.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC0-1.0"
+}

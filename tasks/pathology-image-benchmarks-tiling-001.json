@@ -1,0 +1,38 @@
+{
+  "id": "pathology-image-benchmarks-tiling-001",
+  "title": "Tiling + tissue segmentation + MPP/magnification normalization pipeline",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "After ingest and de-id re-scan, slides with deidStatus: passed or manual-cleared can be tiled into patches for downstream ML tasks. A critical correctness requirement is MPP (microns-per-pixel) normalization: TCGA/TCIA slides are scanned at varying magnifications (20x, 40x); without normalization, a model may exploit resolution artifacts rather than biology. Tissue segmentation is required to avoid tiling empty background. The preprocessing pipeline must be fully reproducible from a pinned config and produce a stable preprocessing hash recorded in every result. This pipeline is an adapter (Python/OpenSlide) isolated from the agent-neutral core. See PLAN.md (Data layer, MPP/magnification normalization).",
+  "objective": "Implement the WSI tiling, tissue segmentation, and MPP/magnification normalization pipeline as a Python adapter: tile de-id-passed slides into patches at a declared microns-per-pixel target (so 20x and 40x scanners are comparable), apply tissue-detection segmentation to exclude background tiles, record per-slide MPP and scanner in the manifest, and produce a stable preprocessing hash from the pinned config. Derived tiles inherit provenance and source license from the parent slide record. The pipeline is reproducible from a pinned config file.",
+  "acceptanceCriteria": [
+    "Tiling and tissue segmentation are reproducible from a pinned configuration file; the config produces a stable preprocessing hash.",
+    "Slides are resampled to a declared microns-per-pixel target so 20x and 40x scanner outputs are comparable.",
+    "Per-slide MPP and scanner/vendor are recorded in the manifest (matching the provenance schema from pathology-image-benchmarks-prov-001).",
+    "Background tiles are excluded by a tissue-detection segmentation step.",
+    "Derived tiles inherit provenance (source collection, accession, license, deidStatus) and source license from the parent slide manifest record.",
+    "Only slides with deidStatus: passed or manual-cleared are tiled; unscanned or quarantined slides are excluded.",
+    "The pipeline is implemented as a Python adapter (e.g. adapters/wsi-python/) isolated from the agent-neutral TypeScript core.",
+    "pnpm build && pnpm test && pnpm lint pass; CI provenance gate passes on derived tile manifests."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-ingest-001.json",
+    "tasks/pathology-image-benchmarks-deid-002.json",
+    "tasks/pathology-image-benchmarks-prov-001.json"
+  ],
+  "output": "A tiling + tissue segmentation + MPP-normalization pipeline PR (Python adapter), with a pinned config, preprocessing-hash output, and provenance-carrying tile manifests.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

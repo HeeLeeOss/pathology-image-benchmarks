@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-dicom-001",
+  "title": "DICOM-WSI ingest + OME-Zarr conversion path",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Some open WSI collections (notably TCIA DICOM-format cohorts) are distributed in DICOM-WSI format rather than SVS/TIFF. OME-Zarr is an emerging cloud-native format that improves interoperability. Adding a DICOM ingest and OME-Zarr conversion path broadens the set of approved collections the benchmark can use. This is a backlog/future task; per-collection license must be verified before any DICOM collection is ingested (the standard license gate applies). The Python WSI tooling (pydicom, wsidicom, OME-Zarr libraries) must be isolated as an adapter, not placed in the agent-neutral core.",
+  "objective": "Implement a DICOM-WSI ingest path and optional OME-Zarr conversion adapter: read DICOM-format WSIs, extract per-slide provenance metadata (scanner, MPP/pixel-spacing, dimensions, retrieval date, checksum), and convert to OME-Zarr for downstream tiling. The pipeline must pass the same license gate (approved allow-list entry required before any ingest) and de-id re-scan (label/macro/DICOM-tag screening) as the SVS path. Implemented as a Python adapter isolated from the agent-neutral core.",
+  "acceptanceCriteria": [
+    "DICOM-WSI files can be ingested and their per-slide provenance metadata extracted (scanner, MPP from DICOM pixel-spacing, dimensions, retrieval date, checksum) into the standard manifest schema.",
+    "Optional conversion to OME-Zarr is implemented and produces a manifest record referencing the converted artifact.",
+    "The license gate applies: only collections with status: approved in sources/allowlist.yml can be ingested; per-collection DICOM license is verified before use.",
+    "The de-id re-scan covers DICOM-specific PHI vectors: DICOM tag scanning for identifiers, plus label/macro image extraction and screening.",
+    "The DICOM ingest adapter is isolated as a Python adapter (e.g. adapters/wsi-python/dicom/) and does not place DICOM-specific logic in the agent-neutral core.",
+    "pnpm build && pnpm test && pnpm lint pass; CI license-gate and provenance-completeness gates pass for DICOM-ingested manifests."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-ingest-001.json",
+    "tasks/pathology-image-benchmarks-deid-001.json"
+  ],
+  "output": "A DICOM-WSI ingest + optional OME-Zarr conversion adapter PR with provenance manifest integration, license gate compliance, and DICOM-tag de-id scanning.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "pathology-image-benchmarks-modelcard-001",
+  "title": "Model-card template + checklist for external submissions",
+  "project": "pathology-image-benchmarks",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The benchmark requires honest reporting with model cards for every baseline. To standardize external submissions and make it easy for the community to produce compliant model cards, a reusable model-card template and a submission checklist are needed. The template must require the 'not for clinical or diagnostic use; research only' framing, honest provenance (split ID, seeds, variance, preprocessing hash, compute provenance), and weights license disclosure. This is a low-effort, high-leverage writing task that improves the reporting quality of external submissions. See PLAN.md (Baselines + model cards, Datasheets + model cards as required release artifacts).",
+  "objective": "Write a reusable model-card template and a submission checklist for external contributors submitting models to the benchmark. The template must cover: intended use (research benchmarking only, not clinical); training data and license; reported metrics with variance (split ID, seeds, across-seed variance required); preprocessing hash and compute provenance; known limitations and biases (including site/scanner effects); weights license disclosure (non-commercial/gated weights must be disclosed). The checklist must verify the 'not for clinical or diagnostic use' notice is present and that no single-seed headline numbers are submitted.",
+  "acceptanceCriteria": [
+    "The model-card template covers all required sections: intended use (research-only, not clinical), training data and license, metrics with variance (split, seeds, variance), preprocessing hash, compute provenance, limitations/biases, and weights license.",
+    "The template prominently includes the 'not for clinical or diagnostic use; research only' notice as a required field.",
+    "A submission checklist accompanies the template verifying: honest metrics (no single-seed numbers), required provenance fields present, not-for-clinical-use notice present, and weights license disclosed.",
+    "Non-commercial or gated weights must be explicitly disclosed in the model card; the template has a dedicated field for this.",
+    "The template is committed as a reusable artifact (e.g. docs/model-card-template.md) via PR.",
+    "The CI not-for-clinical-use linter can be pointed at completed model cards using this template."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-baseline-001.json"
+  ],
+  "output": "A model-card template (committed via PR) with a submission checklist, covering honest provenance, not-for-clinical-use framing, and weights-license disclosure for external benchmark submissions.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

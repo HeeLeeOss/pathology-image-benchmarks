@@ -1,0 +1,34 @@
+{
+  "id": "pathology-image-benchmarks-task-001",
+  "title": "Benchmark task v0 spec + metrics + evaluation protocol",
+  "project": "pathology-image-benchmarks",
+  "type": "design-spec",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "With site-stratified splits in place, the benchmark task must be fully specified before any baseline can be run. The task spec must fix: what the inputs are, the label definition and label provenance, what data is allowed, and which metric(s) are used (e.g. balanced accuracy, AUROC, or Cohen's kappa, as appropriate to the task). The evaluation protocol must be frozen: held-out test, labels withheld, scoring via the submission harness. The task must be explicitly framed as research benchmarking, not clinical use. Domain-reviewer sign-off is required. See PLAN.md (Benchmark task + evaluation harness).",
+  "objective": "Write the benchmark task v0 specification: define the inputs (tiles/slides from the approved, tiled dataset), the label definition and its provenance (source of ground truth, label type, annotation process), what data is allowed (splits defined in pathology-image-benchmarks-splits-001, no additional data), the primary metric(s) and rationale (e.g. balanced accuracy or AUROC with justification), and the frozen evaluation protocol (held-out test, labels withheld from participants, scoring via harness). Frame the task explicitly as research benchmarking, not clinical use. Record domain-reviewer sign-off.",
+  "acceptanceCriteria": [
+    "Task is fully specified: inputs (tile or slide level), label definition (label type, source of ground truth, annotation provenance), allowed data (splits from pathology-image-benchmarks-splits-001 only), and metric(s) with rationale.",
+    "Primary metric(s) are appropriate to the task (e.g. balanced accuracy for imbalanced classification, AUROC, or Cohen's kappa) with written justification.",
+    "Evaluation protocol is frozen: held-out test set, ground-truth labels withheld from participants, scoring only via the submission harness.",
+    "The task is explicitly framed as research benchmarking, not clinical use; 'not for clinical or diagnostic use' is stated in the spec.",
+    "Domain-reviewer sign-off on the task specification is recorded in the governance log.",
+    "The task spec is committed as a versioned document (e.g. benchmark/task-v0/spec.md) via PR."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-splits-001.json"
+  ],
+  "output": "A frozen benchmark task v0 specification document (committed via PR) covering inputs, label definition and provenance, allowed data, metric(s) with rationale, evaluation protocol, and research-only framing; with domain-reviewer sign-off recorded.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

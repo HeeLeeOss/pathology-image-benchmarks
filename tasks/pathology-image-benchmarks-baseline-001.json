@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-baseline-001",
+  "title": "Trivial + ≥1 MIL baseline with model cards (honest reporting)",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "The benchmark needs honest baselines to anchor comparisons: a trivial/majority baseline (the sanity floor, proving reported gains are non-trivial) and at least one multiple-instance learning (MIL) baseline (e.g. ABMIL or CLAM-style tile-aggregation). Every reported number must carry its full provenance (split ID, seed(s), across-seed variance, preprocessing hash, compute provenance) — no single-seed headline claims. Each baseline must ship a model card: intended use = research benchmarking only, not clinical; training data + license; metrics with variance; known limitations including site effects. Heavy GPU training runs become funded tasks; the donated-lane deliverable is the code plus a CPU-feasible/trivial baseline. Domain-reviewer sign-off required. See PLAN.md (Baselines + model cards).",
+  "objective": "Implement and report: (1) a trivial/majority-class baseline (runs on CPU, reports primary metric); (2) at least one MIL baseline (e.g. ABMIL or CLAM-style tile encoder + aggregator). Report every result with split ID, seed(s), across-seed variance, preprocessing hash, and compute provenance. Write a model card for each baseline: intended use (research benchmarking only, not clinical), training data + license, reported metrics with variance, known limitations including site/scanner bias. The donated-lane code must be structured so a heavy GPU run can be done as a separate funded task.",
+  "acceptanceCriteria": [
+    "A trivial/majority-class baseline is implemented, runs on CPU, and reports the primary benchmark metric.",
+    "At least 1 MIL baseline is implemented (e.g. ABMIL or CLAM-style tile encoder + aggregator).",
+    "Every reported result carries: split ID, seed(s), across-seed variance (multiple seeds reported), preprocessing hash, and compute provenance. No single-seed headline numbers.",
+    "Each baseline ships a model card stating: intended use = research benchmarking only (not clinical or diagnostic), training data and license, metrics with variance, known limitations (including site/scanner effects).",
+    "Model cards carry the 'not for clinical or diagnostic use; research only' notice; CI not-for-clinical-use linter passes.",
+    "Domain-reviewer sign-off on baseline results is recorded in the governance log.",
+    "The code is structured so that a heavy GPU training run can be isolated into a separate funded task with a fundedBudgetUsd cap."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-task-001.json",
+    "tasks/pathology-image-benchmarks-splits-001.json"
+  ],
+  "output": "A PR containing the trivial and MIL baseline code (Python adapter), result records with full honest provenance (split/seeds/variance/preprocessing-hash/compute), and model cards for each baseline.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

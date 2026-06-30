@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-scaffold-001",
+  "title": "Monorepo + CI scaffold (license-gate + provenance + not-for-clinical-use linters)",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The project needs an agent-neutral monorepo skeleton with CI gates that enforce the three non-negotiable safety properties before any data pipeline exists: (1) license gate — no derived artifact may reference a source not approved in sources/allowlist.yml; (2) provenance completeness — every dataset/result record must carry all fields defined in pathology-image-benchmarks-prov-001; (3) 'not for clinical or diagnostic use' — every model card and dataset artifact must carry the notice. Python WSI tooling must be isolated as an adapter, not placed in the agent-neutral core. See PLAN.md (Solution approach & architecture) and TASKS.md (pathology-image-benchmarks-scaffold-001 acceptance criteria).",
+  "objective": "Create the monorepo scaffold with pnpm workspaces (TypeScript/ESM for the Elyos-facing core; Python WSI tooling isolated as a documented adapter placeholder), and wire three CI linters: (1) a license-gate linter that fails if any dataset or result record references a source not marked approved in sources/allowlist.yml; (2) a provenance-completeness linter that fails on any record missing a required provenance field; (3) a not-for-clinical-use linter that fails if any model card or dataset artifact omits the mandatory notice. pnpm build && pnpm test && pnpm lint must pass.",
+  "acceptanceCriteria": [
+    "CI fails on any dataset or result record referencing a source not marked approved in sources/allowlist.yml.",
+    "CI fails on any dataset or result record missing a required provenance field (as defined in pathology-image-benchmarks-prov-001).",
+    "CI linter asserts every model card and dataset artifact carries the 'not for clinical or diagnostic use; research only' notice.",
+    "Python WSI tooling is isolated as an adapter (e.g. adapters/wsi-python/) with a placeholder or stub; it is not placed in the agent-neutral core (packages/).",
+    "pnpm build && pnpm test && pnpm lint pass on the scaffold with no real data.",
+    "The repo structure follows Elyos conventions: TypeScript/ESM, pnpm workspaces, no secrets or tokens committed."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-prov-001.json",
+    "tasks/pathology-image-benchmarks-license-001.json"
+  ],
+  "output": "A monorepo scaffold PR with pnpm workspaces, TypeScript/ESM core packages, a Python adapter placeholder, and three passing CI linters (license-gate, provenance-completeness, not-for-clinical-use).",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

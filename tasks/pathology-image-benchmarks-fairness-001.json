@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-fairness-001",
+  "title": "Site/scanner disparity + bias analysis across splits",
+  "project": "pathology-image-benchmarks",
+  "type": "research",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The site-confounding audit in pathology-image-benchmarks-splits-001 tests whether site is recoverable across the train/test split boundary. A deeper fairness and bias analysis extends this: measuring performance disparities across submitting sites, scanner vendors, and (where aggregate metadata is available) demographic proxies recorded in open-access imaging metadata. This is a research-level analysis to surface systematic biases and scanner/site disparities in model performance — not patient-facing, but important for honest benchmarking. Extends the site-confounding audit. Domain-reviewer sign-off required.",
+  "objective": "Conduct a site/scanner disparity and bias analysis across the benchmark splits: stratify baseline model performance by submitting site, scanner vendor, and any other available aggregate split variables; measure and report performance disparities with statistical context; identify whether certain sites or scanners are systematically harder for the baselines; surface findings honestly in a report rather than hiding them. Extends the site-confounding audit from pathology-image-benchmarks-splits-001.",
+  "acceptanceCriteria": [
+    "Baseline model performance is stratified by submitting site and scanner vendor; per-stratum metrics are reported with sample counts and confidence intervals or variance.",
+    "Performance disparities across sites/scanners are measured and reported; any statistically meaningful disparity is surfaced and discussed, not hidden.",
+    "Findings are framed as research benchmarking, not clinical conclusions; 'not for clinical or diagnostic use' is stated.",
+    "The analysis builds on and extends the site-confounding audit from pathology-image-benchmarks-splits-001, providing deeper stratification.",
+    "Domain-reviewer sign-off on the analysis methodology and conclusions is recorded in the governance log.",
+    "A report is committed via PR (e.g. docs/analysis/fairness-report.md)."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-splits-001.json",
+    "tasks/pathology-image-benchmarks-baseline-001.json"
+  ],
+  "output": "A site/scanner disparity and bias analysis report (committed via PR) with per-stratum performance metrics, disparity findings, and domain-reviewer sign-off.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

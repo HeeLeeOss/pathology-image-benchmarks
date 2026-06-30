@@ -1,0 +1,38 @@
+{
+  "id": "pathology-image-benchmarks-license-002",
+  "title": "Verify & record first ≥3 candidate open collections (≥2 approved)",
+  "project": "pathology-image-benchmarks",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Before any pixel can be ingested, the project must identify and vet at least 3 candidate open collections, approving at least 2 in the sources/allowlist.yml. The allow-list schema was defined in pathology-image-benchmarks-license-001. Candidate sources include TCGA open-access imaging cohorts (via NCI GDC), per-collection CC-BY TCIA/CPTAC collections, and CC0 sets such as Camelyon16/17. Each collection's open-access status and reuse license must be verified per-collection (not per-source-family), since TCIA terms vary by collection. Controlled-access collections (dbGaP, EGA, identifiable patient data) are categorically rejected and must not be approved. See PLAN.md (Data, licensing & compliance).",
+  "objective": "Research and document at least 3 candidate open WSI collections by filling out sources/allowlist.yml entries for each: verify open-access tier, reuse license, collection-level terms, and rights analysis; record retrieval-date snapshot, archive URL, accession/collection ID, format, and status (approved|rejected|pending). At least 2 entries must reach status approved; at least 1 approved entry must be a TCGA open-access imaging cohort or a CC-BY TCIA/CPTAC collection; any CC0 set (e.g. Camelyon) must be flagged CC0. Zero controlled-access items may be approved.",
+  "acceptanceCriteria": [
+    "At least 3 candidate collections are analyzed with recorded open-access confirmation and reuse-license determination in sources/allowlist.yml.",
+    "At least 2 collections reach status: approved in the allow-list.",
+    "At least 1 approved entry is a TCGA open-access imaging cohort (with TCGA citation requirement noted) or a CC-BY TCIA/CPTAC collection (with CC-BY version recorded).",
+    "Any CC0 collection (e.g. Camelyon16/17) is explicitly flagged with license: CC0 in the allow-list entry.",
+    "Zero controlled-access items (dbGaP, EGA, individual-level genomics, PHI) are approved; any ambiguous per-collection term is routed to the Elyos governance board.",
+    "All per-collection terms are verified at the collection level, not assumed from the source family (since TCIA terms vary per collection).",
+    "Every allow-list entry carries retrieval date, archive URL, accession/collection ID, format, and the rights analysis field."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "sources/allowlist.yml",
+    "https://portal.gdc.cancer.gov/",
+    "https://www.cancerimagingarchive.net/",
+    "https://grand-challenge.org/algorithms/"
+  ],
+  "output": "Populated sources/allowlist.yml with at least 3 candidate collection entries (≥2 approved), committed via PR, documenting verified open-access status, reuse license, and rights analysis for each.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

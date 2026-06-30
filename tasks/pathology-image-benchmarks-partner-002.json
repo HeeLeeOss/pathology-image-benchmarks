@@ -1,0 +1,34 @@
+{
+  "id": "pathology-image-benchmarks-partner-002",
+  "title": "Secure ≥1 adopter + reuse/citation tracking",
+  "project": "pathology-image-benchmarks",
+  "type": "research",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The project's Definition of Shipped requires at least one external group (lab, challenge/toolkit, or teaching program) to use or cite the benchmark, with a documented instance. Without an adopter, the benchmark is not 'shipped' — the deed is not delivered. This task, which follows the public release, completes the named outreach from pathology-image-benchmarks-partner-001, secures a commitment, and establishes reuse/citation tracking. The adopter/steward deadline is 2026-12-31; if no adopter is secured by ~2027-03-31, a pivot-or-mothball decision is required. See PLAN.md (M4, Partner/compute-path, Risks).",
+  "objective": "Convert outreach leads from pathology-image-benchmarks-partner-001 into at least one documented commitment: a named external group (academic comp-path lab, MICCAI/Grand-Challenge organizer, WSI toolkit project, or teaching program) that uses or cites the benchmark. Document the commitment with the group name, the use/citation instance, and date. Establish reuse/citation tracking (e.g. a GitHub Discussions thread, a DOI citation tracker, or equivalent). Update the governance log.",
+  "acceptanceCriteria": [
+    "At least 1 named external group (lab, challenge/toolkit, or teaching program) uses or cites the benchmark, with a documented instance (publication, workshop paper, GitHub repo reference, or curriculum use).",
+    "The commitment is documented in a governance log entry with: group name, type of use/citation, date, and a verifiable pointer (URL or reference).",
+    "Reuse/citation tracking is set up (e.g. DOI citation tracker, Semantic Scholar alerts, or GitHub Discussions thread) and the method is documented.",
+    "The adopter/steward deadline (2026-12-31) and pivot-or-mothball rule (~2027-03-31) are noted in the log.",
+    "The document is committed via PR (e.g. docs/governance/adoption-log.md)."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-release-001.json",
+    "tasks/pathology-image-benchmarks-partner-001.json"
+  ],
+  "output": "An adoption log (committed via PR) documenting at least 1 named external adopter, their use/citation instance, and the reuse/citation tracking setup.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

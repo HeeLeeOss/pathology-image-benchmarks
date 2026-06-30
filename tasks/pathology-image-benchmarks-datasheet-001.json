@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-datasheet-001",
+  "title": "Datasheet for the ingested dataset (provenance + license + de-id)",
+  "project": "pathology-image-benchmarks",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Every released dataset must carry a datasheet (per Gebru et al. 'Datasheets for Datasets') documenting its provenance, license, de-identification status, collection process, composition, and intended/prohibited uses. The datasheet for the first ingested collection must be drafted after the de-id re-scan (pathology-image-benchmarks-deid-002) and the tiling pipeline (pathology-image-benchmarks-tiling-001) are complete, so that actual de-id results and preprocessing choices are accurately described. The datasheet must include the mandatory 'not for clinical or diagnostic use; research only' notice. See PLAN.md (Release artifacts, Datasheets + model cards).",
+  "objective": "Draft the datasheet for the first ingested dataset following the Datasheets for Datasets convention, covering: collection provenance (source archive, collection name, accession, license, open-access tier, retrieval date), de-identification status (screening method, deidStatus distribution, quarantine count), composition (slide count, scanner/vendor distribution, MPP, tissue types), intended uses (computational-pathology benchmarking; research only), prohibited uses (clinical/diagnostic use; re-identification; any controlled-access linkage), and upstream attribution (TCGA citation requirement or CC-BY collection attribution). Every artifact must carry the 'not for clinical or diagnostic use; research only' notice.",
+  "acceptanceCriteria": [
+    "Datasheet covers: source provenance (archive, collection name, accession, license, retrieval date, checksum), composition (slide count, scanner distribution, MPP, tissue type), de-id status (screening method, deidStatus distribution, quarantine count), and collection/preprocessing process.",
+    "Intended uses are stated: computational-pathology benchmarking, research only.",
+    "Prohibited uses are stated: clinical or diagnostic use, patient care, re-identification, any controlled-access data linkage.",
+    "Upstream attribution is preserved: TCGA citation requirement noted if applicable; CC-BY collection attribution recorded.",
+    "The 'not for clinical or diagnostic use; research only' notice is prominently included.",
+    "Datasheet is committed via PR (e.g. docs/datasheets/dataset-<collection>.md) and passes the CI not-for-clinical-use linter."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-deid-002.json",
+    "tasks/pathology-image-benchmarks-tiling-001.json"
+  ],
+  "output": "A Datasheets-for-Datasets-style datasheet document (committed via PR) for the first ingested dataset, covering provenance, license, de-id status, composition, intended/prohibited uses, and upstream attribution.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

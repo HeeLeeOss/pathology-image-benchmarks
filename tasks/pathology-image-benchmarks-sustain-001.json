@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-sustain-001",
+  "title": "Sustainability, versioning + license-reverification cadence plan",
+  "project": "pathology-image-benchmarks",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "After the benchmark is released and adopted, it must remain trustworthy over time: per-collection licenses can change, upstream archives can withdraw collections, and new versions of the benchmark must be versioned and DOI-able. A named maintenance rotation, a versioning scheme, a license re-verification cadence, and a steward relationship must all be documented. This plan is the M4 sustainability gate. See PLAN.md (Sustainability & maintenance, License-reverification cadence).",
+  "objective": "Author a sustainability, versioning, and license-reverification cadence plan covering: (1) the maintenance rotation (who owns the harness, gate, and CI); (2) the release versioning scheme (semver, DOI-per-version, per-release license/provenance snapshot); (3) the license re-verification cadence (schedule for re-checking per-collection terms; what to do if a collection is withdrawn or re-licensed); (4) the steward relationship (who owns the adopter relationship and reuse tracking); (5) how breadth (new collections/tasks) follows a documented, gated process only after the first task/release is stable.",
+  "acceptanceCriteria": [
+    "A named maintenance rotation is documented: who owns the harness, gate, and CI, with a succession/fallback noted.",
+    "The release versioning scheme is defined: semantic versioning, DOI-per-version, and a per-release license/provenance snapshot (retrieval dates, checksums, per-collection license at time of release).",
+    "A license re-verification cadence is specified: the schedule (e.g. annual or per-release), the trigger for out-of-cycle re-verification (collection withdrawn or re-licensed), and the process for handling a license change (update allow-list, quarantine affected artifacts, notify adopters).",
+    "The steward relationship is documented: who owns the adopter relationship and reuse/citation tracking.",
+    "A gated process for adding new collections or tasks (breadth) is defined, requiring the same license + de-id + domain-reviewer gates.",
+    "The sustainability plan is committed via PR (e.g. docs/sustainability.md)."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-partner-002.json",
+    "tasks/pathology-image-benchmarks-release-001.json"
+  ],
+  "output": "A sustainability, versioning, and license-reverification cadence plan document (committed via PR) defining maintenance rotation, versioning scheme, re-verification schedule, steward relationship, and breadth-expansion gating.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

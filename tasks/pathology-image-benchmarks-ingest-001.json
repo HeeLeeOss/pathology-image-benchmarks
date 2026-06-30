@@ -1,0 +1,38 @@
+{
+  "id": "pathology-image-benchmarks-ingest-001",
+  "title": "WSI ingest + checksum + per-slide provenance manifest (one approved collection)",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "With the license gate (pathology-image-benchmarks-license-001/002) and CI scaffold (pathology-image-benchmarks-scaffold-001) in place, M1 begins with ingesting one approved open collection. The ingest pipeline must download from the authoritative archive (NCI GDC or TCIA — not re-hosted mirrors), verify checksums against the archive, and write a per-slide provenance manifest record for every ingested slide. Raw WSIs must not be re-hosted where redistribution rights are absent. This is the first task to touch real data and must comply with all four standing data/ingest guardrails in TASKS.md. See PLAN.md (Data layer, Data, licensing & compliance).",
+  "objective": "Implement the WSI ingest pipeline for one approved open collection: resolve the approved collection from sources/allowlist.yml, download slides from the authoritative archive (GDC/TCIA), verify checksums against the archive (mismatch fails, not silent re-download), and write a per-slide provenance manifest record (source collection, accession ID, license, scanner/vendor, MPP/objective power, dimensions, deidStatus placeholder, retrieval date, checksum) conforming to the schema from pathology-image-benchmarks-prov-001. The pipeline must not re-host raw WSIs where redistribution rights are absent.",
+  "acceptanceCriteria": [
+    "Ingests only from the approved collection's authoritative archive (GDC or TCIA); does not re-host raw WSIs we lack redistribution rights to.",
+    "100% of ingested slides carry a resolvable per-slide provenance manifest record with all required fields (source, accession, license, scanner, MPP, dimensions, retrieval date, checksum).",
+    "Checksums are verified against the archive; any mismatch causes the pipeline to fail, not silently re-download.",
+    "The pipeline only processes collections with status: approved in sources/allowlist.yml; any unapproved source causes CI failure.",
+    "deidStatus field is present in every manifest record (initially set to a pending/unscanned state until pathology-image-benchmarks-deid-002 runs).",
+    "pnpm build && pnpm test && pnpm lint pass; the CI provenance-completeness gate passes on the generated manifest."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-license-002.json",
+    "tasks/pathology-image-benchmarks-scaffold-001.json",
+    "tasks/pathology-image-benchmarks-prov-001.json",
+    "https://portal.gdc.cancer.gov/",
+    "https://www.cancerimagingarchive.net/"
+  ],
+  "output": "A WSI ingest pipeline PR: manifest-driven downloader (adapter, Python/shell), per-slide provenance manifest output, checksum verification, and passing CI gates (license-gate + provenance-completeness).",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

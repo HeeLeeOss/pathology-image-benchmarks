@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-leaderboard-001",
+  "title": "Hosted public leaderboard with held-out test",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "After the benchmark is released and the scoring harness is operational, a hosted public leaderboard allows external groups to submit results and see how they compare. The leaderboard must enforce the honest-reporting schema (split ID, seeds, variance, preprocessing hash, compute provenance required on every submission) and must not expose held-out test labels. This is a large, future-backlog task gated on a steward providing hosting infrastructure. The benchmark explicitly does not chase a single headline number; the leaderboard must surface honest, variance-reported metrics rather than gaming incentives. Depends on steward hosting. See PLAN.md (non-goals: not a leaderboard chasing a single number).",
+  "objective": "Design and implement a hosted public leaderboard interface for the benchmark: accept predictions from external submitters, score them via the evaluation harness from pathology-image-benchmarks-harness-001, display results (with required provenance metadata: split ID, seeds, variance, preprocessing hash), and enforce the honest-reporting schema on every submission. Must not expose held-out test labels. Requires steward-provided hosting infrastructure.",
+  "acceptanceCriteria": [
+    "The leaderboard accepts prediction files in the defined submission format and scores them via the evaluation harness (pathology-image-benchmarks-harness-001).",
+    "The honest-reporting schema is enforced: submissions missing split ID, seeds, preprocessing hash, or compute provenance are rejected, not silently accepted.",
+    "Held-out ground-truth labels are not accessible to submitters through the leaderboard interface.",
+    "The leaderboard displays per-submission metrics with variance/seed information, not just a single headline number.",
+    "Hosting infrastructure is documented (steward-provided); the code is portable and not vendor-locked.",
+    "The leaderboard code is implemented as a PR; deployment is gated on the steward confirming hosting is available.",
+    "The 'not for clinical or diagnostic use; research only' notice is displayed prominently on the leaderboard."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-harness-001.json",
+    "tasks/pathology-image-benchmarks-release-001.json"
+  ],
+  "output": "A hosted public leaderboard implementation PR with honest-reporting enforcement, held-out label protection, and variance-reporting display; gated on steward hosting confirmation.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

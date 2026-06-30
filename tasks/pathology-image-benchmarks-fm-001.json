@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-fm-001",
+  "title": "License-segregated foundation-model baseline (labeled, optional)",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "low",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "large",
+  "status": "open",
+  "context": "Several foundation models for computational pathology (e.g. UNI, CONCH) use non-commercial or gated weights licenses. Including a foundation-model baseline adds useful comparison data for researchers, but it must be clearly segregated and labeled as non-commercial if its weights are non-commercial/gated, and must never be required to use the benchmark (the permissive MIT-licensed path must stand alone). This is an optional M3 task; if included, the foundation model must be reported with the same honest provenance as other baselines. Heavy GPU runs become funded tasks with a fundedBudgetUsd cap. Domain-reviewer and license-reviewer sign-off required. See PLAN.md (Baselines, Non-commercial assets).",
+  "objective": "Implement an optional license-segregated foundation-model baseline: record the weights license for the chosen encoder (e.g. UNI, CONCH, or equivalent); if the license is non-commercial or gated, clearly label it as such and place it in an explicitly segregated path (e.g. baselines/non-commercial/); ensure it is never a required dependency to use the benchmark. Report with the same honest provenance as pathology-image-benchmarks-baseline-001 (split ID, seeds, variance, preprocessing hash, compute provenance). Write a model card noting the non-commercial/gated weights license. Heavy GPU runs are scoped as a separate funded task.",
+  "acceptanceCriteria": [
+    "The foundation model encoder's weights license is recorded in the model card and the allow-list/segregation record.",
+    "If the weights license is non-commercial or gated, the baseline is clearly labeled non-commercial and placed in a segregated path (e.g. baselines/non-commercial/); it is never required to use the benchmark.",
+    "A permissive (MIT-licensed) baseline path exists independently and is not dependent on this optional baseline.",
+    "Results are reported with the same honest provenance as other baselines: split ID, seed(s), across-seed variance, preprocessing hash, and compute provenance.",
+    "A model card is shipped: intended use = research benchmarking only (not clinical), weights license and any usage-agreement requirements stated, metrics with variance, known limitations.",
+    "Domain-reviewer and license-reviewer sign-off are recorded in the governance log.",
+    "Heavy GPU training is identified as a separate funded task (not part of this donated-lane deliverable beyond code + lightweight run)."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-baseline-001.json",
+    "tasks/pathology-image-benchmarks-license-002.json"
+  ],
+  "output": "An optional license-segregated foundation-model baseline PR with a model card, weights-license record, segregated path, and honest provenance reporting; or a documented decision not to include this baseline.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

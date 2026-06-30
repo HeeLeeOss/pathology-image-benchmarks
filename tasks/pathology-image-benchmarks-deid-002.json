@@ -1,0 +1,35 @@
+{
+  "id": "pathology-image-benchmarks-deid-002",
+  "title": "Run de-id re-scan on the ingested batch; publish quarantine report",
+  "project": "pathology-image-benchmarks",
+  "type": "data",
+  "lane": "donated",
+  "priority": "high",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "dataset",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Following ingest (pathology-image-benchmarks-ingest-001), every slide in the batch must be screened for burned-in PHI before any derived artifact (tile, thumbnail, feature) is produced. The screening procedure was defined in pathology-image-benchmarks-deid-001: extract label/macro/associated images, scan filenames and metadata, apply OCR + heuristics, quarantine any positive, update deidStatus in the manifest. No derived artifact may be produced from an unscanned slide. This task runs the de-id re-scan on the real ingested batch and publishes a quarantine report. Output is verification/metadata only; controlled-access or identifiable data must never appear in any artifact.",
+  "objective": "Implement and run the WSI de-id re-scan pipeline (per the policy in pathology-image-benchmarks-deid-001) on the ingested batch: extract label, macro, and associated images from each slide; scan filenames and embedded metadata; apply OCR and text/face heuristics; update deidStatus (passed|quarantined|manual-cleared) in the per-slide manifest; exclude any quarantined slide from all derived artifacts. Publish a quarantine report listing screened count, passed count, quarantined count, and screening method. Slide-label and macro images must not be published in any artifact.",
+  "acceptanceCriteria": [
+    "100% of ingested slides are screened (label image, macro image, associated/auxiliary images, embedded metadata, and filenames).",
+    "Any positive screening result automatically sets deidStatus: quarantined in the manifest and excludes the slide from all derived artifacts pending manual review.",
+    "A quarantine report is published listing: total screened, total passed, total quarantined, the screening method used, and the manual-review SLA.",
+    "No slide-label or macro image appears in any published artifact.",
+    "No derived artifact (tile, thumbnail, feature) references a slide with deidStatus other than passed or manual-cleared.",
+    "The de-id scan results are recorded as verification/metadata only; no identifiable patient data is included in any output artifact."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-ingest-001.json",
+    "tasks/pathology-image-benchmarks-deid-001.json"
+  ],
+  "output": "Updated per-slide manifest records with deidStatus fields populated, and a published quarantine report (screened/passed/quarantined counts, screening method) committed as a verification artifact.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

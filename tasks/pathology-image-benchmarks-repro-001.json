@@ -1,0 +1,36 @@
+{
+  "id": "pathology-image-benchmarks-repro-001",
+  "title": "Container (digest-pinned) + third-party reproduction of headline baseline",
+  "project": "pathology-image-benchmarks",
+  "type": "code",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "computational-pathology", "machine-learning", "reproducibility"],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "The benchmark's credibility depends on independent reproducibility: another operator on another machine should be able to reproduce the headline baseline within a pre-declared tolerance, starting only from the container, pinned splits, and pinned preprocessing config. This is M3's primary exit gate and the operationalization of the 'results reproduce' success metric. Without a digest-pinned container and a documented independent re-run, the benchmark makes unverifiable claims. See PLAN.md (Reproducibility, Third-party reproduction).",
+  "objective": "Build a digest-pinned container image containing the full pipeline (tiling, tissue segmentation, baseline model code, evaluation harness) with all dependencies pinned. Document the environment and inputs (container digest, split ID, preprocessing config hash, seeds). Conduct or document an independent third-party re-run (different operator or machine) that reproduces the headline baseline metric within a pre-declared tolerance. Log the reproduction environment and result.",
+  "acceptanceCriteria": [
+    "A container image (Docker or Apptainer) is built with a digest-pinned image reference; all dependencies are pinned (lockfiles + image digest).",
+    "The container encapsulates the full pipeline needed to reproduce the baseline: tiling, preprocessing, model code, and evaluation harness.",
+    "An independent re-run (different operator or machine from the original run) reproduces the headline baseline metric within a pre-declared tolerance.",
+    "The reproduction is logged with: container digest, split ID, preprocessing config hash, seeds used, environment details (OS, GPU/CPU), and the reproduced metric value.",
+    "The pre-declared tolerance (e.g. ±0.5% on primary metric) is stated before the re-run, not after.",
+    "The reproduction log is committed as a versioned artifact (e.g. repro/v1/reproduction-log.md) via PR."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md",
+    "tasks/pathology-image-benchmarks-baseline-001.json",
+    "tasks/pathology-image-benchmarks-tiling-001.json",
+    "tasks/pathology-image-benchmarks-harness-001.json"
+  ],
+  "output": "A digest-pinned container image definition and a committed reproduction log PR documenting the independent third-party re-run and its result within tolerance.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "MIT"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "pathology-image-benchmarks-partner-001",
+  "title": "Domain-reviewer, adopter & compute-path outreach",
+  "project": "pathology-image-benchmarks",
+  "type": "research",
+  "lane": "donated",
+  "priority": "medium",
+  "domain": ["cancer-research", "computational-pathology", "open-data", "machine-learning"],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "The project has three unsecured human/decision dependencies that gate later milestones: (1) a computational-pathology domain reviewer (hard gate for M2, deadline 2026-08-31); (2) at least 3 candidate adopters + 1 compute path in active conversation (target 2026-09-30); (3) a named adopter/steward for the benchmark (gates M4, deadline 2026-12-31). Without a domain reviewer, no benchmark task, split, or result may be published. Without an adopter/steward, the project cannot reach Definition of Shipped. This outreach task initiates the dated acquisition plan. See PLAN.md (Partner/compute-path outreach, Risks).",
+  "objective": "Draft and log an outreach plan targeting: (a) a qualified computational-pathology/bioinformatics domain reviewer (candidates: academic comp-path labs, WSI toolkit maintainers such as OpenSlide/CLAM/TIAToolbox, challenge organizers); (b) at least 3 candidate adopters (research labs, MICCAI/Grand-Challenge organizers, teaching programs); (c) a compute-path option (donated or funded GPU). Produce a logged status document recording: candidates contacted, responses, next steps, and dates — with the build-vs-mothball decision rule (if no adopter by ~2027-03-31, pivot or mothball) noted.",
+  "acceptanceCriteria": [
+    "A named list of at least 3 candidate domain-reviewer contacts (labs, toolkit maintainers, or challenge organizers) is documented with outreach status.",
+    "A named list of at least 3 candidate adopters (research labs, challenge/toolkit groups, teaching programs) is documented with outreach status.",
+    "At least 1 candidate compute-path option (donated or funded GPU) is identified and its status logged.",
+    "Acquisition deadlines are recorded: domain reviewer by 2026-08-31; adopters/compute in conversation by 2026-09-30; adopter/steward secured by 2026-12-31.",
+    "The build-vs-mothball/pivot decision rule (~2027-03-31 if no adopter secured) is noted in the document.",
+    "The document is committed as a governance log entry (e.g. docs/governance/outreach-log.md) via PR."
+  ],
+  "resources": [
+    "PLAN.md",
+    "TASKS.md",
+    "CLAUDE.md"
+  ],
+  "output": "An outreach status log (committed via PR) recording candidate domain-reviewer, adopter, and compute-path contacts with their outreach status, acquisition deadlines, and the build-vs-mothball decision rule.",
+  "requestor": "jdev1977",
+  "verifiedNeed": false,
+  "outputLicense": "CC-BY-4.0"
+}

@@ -56,7 +56,7 @@ reviewed, and demonstrably reused by someone outside the team. A **dated partner
 plan** and a **build-vs-mothball decision rule** (below and in *Risks*) govern what happens if those
 commitments slip, rather than shipping a benchmark to no one.
 
-**Compute is a first-class, unsolved dependency.** Elyos's donated lane is a **coding agent preparing
+**Compute is a first-class, unsolved dependency.** Hee-Lee Oss's donated lane is a **coding agent preparing
 PRs** — it does not run GPU training. The benchmark *harness, splits, datasheets, baseline code, and
 small-scale runs* are produced in the donated lane, but **large WSI training runs require donated or
 funded GPU compute** that is not yet secured. The plan is sequenced so that everything of lasting
@@ -200,7 +200,7 @@ independently reproduced.
 
 When a request falls in the refused set (e.g. "just pull the matched germline VCFs from dbGaP," or
 "skip the de-id re-scan to save time"), the work **stops and surfaces the concern** rather than
-proceeding (Elyos refusal guardrail).
+proceeding (Hee-Lee Oss refusal guardrail).
 
 ---
 
@@ -209,11 +209,11 @@ proceeding (Elyos refusal guardrail).
 This is a **data/ML-infrastructure** project; the architecture is a pipeline plus a set of versioned,
 provenance-carrying artifacts — not a running service.
 
-**Tech stack.** TypeScript/ESM + pnpm for the Elyos-facing tooling, CI, schema validation, and the
-allow-list/provenance linters (consistent with the Elyos core conventions). The WSI/ML pipeline is
+**Tech stack.** TypeScript/ESM + pnpm for the Hee-Lee Oss-facing tooling, CI, schema validation, and the
+allow-list/provenance linters (consistent with the Hee-Lee Oss core conventions). The WSI/ML pipeline is
 **Python** (the field's lingua franca: OpenSlide / `openslide-python`, `libvips`/`pyvips`, `tifffile`,
 NumPy, PyTorch) invoked as a documented, containerized adapter — kept **out of the agent-neutral
-core** (Elyos architecture rule: vendor/tool-specific logic lives in adapters). Containerization via
+core** (Hee-Lee Oss architecture rule: vendor/tool-specific logic lives in adapters). Containerization via
 Docker/Apptainer for reproducible runs. Everything pinned (lockfiles + image digests).
 
 **Components**
@@ -270,7 +270,7 @@ Docker/Apptainer for reproducible runs. Everything pinned (lockfiles + image dig
 - The **license/de-id gate is the first build item and a release gate** — not documentation.
 - **Open-access only**; controlled-access is excluded by policy *and* by CI.
 - **Leakage-safe splits are a primary artifact**, audited, not an afterthought.
-- **Agent-neutral core; Python WSI/ML tooling lives in adapters** (Elyos rule); the Elyos-facing
+- **Agent-neutral core; Python WSI/ML tooling lives in adapters** (Hee-Lee Oss rule); the Hee-Lee Oss-facing
   layer is the schema, allow-list, provenance linter, and CI.
 - **Honest reporting by construction**: the results schema makes single-seed, no-variance, unpinned
   claims impossible to submit.
@@ -338,7 +338,7 @@ and its datasheet.
 
 **Privacy / PII.** No PII is collected, stored, or redistributed. The de-id re-scan is the safeguard
 against inadvertent PHI in slide labels. No secrets, tokens, or access credentials are written to
-logs, receipts, or committed files (Elyos rule).
+logs, receipts, or committed files (Hee-Lee Oss rule).
 
 ---
 
@@ -434,7 +434,7 @@ in governance. The gate + splits + harness remain valuable in either case.
 ## Work breakdown
 
 The itemized, schema-mapped backlog lives in **`TASKS.md`**: ~19 tasks across M0–M4 plus a future
-backlog, each mapped to the Elyos Task JSON schema, with per-task acceptance criteria for the most
+backlog, each mapped to the Hee-Lee Oss Task JSON schema, with per-task acceptance criteria for the most
 important items, milestone Definitions of Done, and a complete, schema-valid example Task JSON for the
 first M0 task (the licensing-gate policy spec). The first build item is the **open-only licensing +
 de-identification gate**, reflecting its status as a hard product requirement and the project's
@@ -456,7 +456,7 @@ reproduction** (M3) are sequenced as primary, gated artifacts rather than incide
   specific task/split/result version; edits require re-sign-off). **Disagreement fallback:** the
   domain reviewer holds a veto on whether a task/split/result is **methodologically sound to publish**;
   a maintainer cannot override a "not sound" on substance — the result does not ship, the disagreement
-  is logged and escalated to Elyos governance / a second reviewer.
+  is logged and escalated to Hee-Lee Oss governance / a second reviewer.
 - **Oncologist + patient-advocate reviewers (HIGH tier): not engaged** — required only if scope ever
   expands to patient-facing/clinical-interpretation content (out of scope). Named here so the gate is
   explicit if that line is ever approached.
@@ -465,7 +465,7 @@ reproduction** (M3) are sequenced as primary, gated artifacts rather than incide
 - **Partner / requestor: TO BE SECURED** — a research lab, challenge/benchmark organizer, open WSI
   toolkit, or teaching program (also a candidate compute path).
 - **Community / board:** license edge-cases (e.g. ambiguous per-collection TCIA terms; whether to
-  include any non-commercial baseline) and the CC-BY-vs-CC0 dataset-license decision go through Elyos
+  include any non-commercial baseline) and the CC-BY-vs-CC0 dataset-license decision go through Hee-Lee Oss
   governance.
 
 ---
@@ -478,8 +478,8 @@ reproduction** (M3) are sequenced as primary, gated artifacts rather than incide
   reuse terms + recorded provenance). **Excluded:** all controlled-access/identifiable data.
 - **Tooling (adapters):** OpenSlide/`openslide-python`, `libvips`/`pyvips`, `tifffile`, PyTorch,
   CLAM/TIAToolbox (verify each tool's license); Docker/Apptainer for reproducible runs.
-- **Elyos pieces:** `packages/schema` (Task JSON), `CLAUDE.md` (work rules, core/adapter rule, refusal
-  guardrails), `docs/good-deed-definition.md` (risk tiers), Elyos governance for license edge-cases.
+- **Hee-Lee Oss pieces:** `packages/schema` (Task JSON), `CLAUDE.md` (work rules, core/adapter rule, refusal
+  guardrails), `docs/good-deed-definition.md` (risk tiers), Hee-Lee Oss governance for license edge-cases.
 - **Human/decision dependencies (critical path):** a secured **domain reviewer** (gates M2); a
   secured **adopter/steward** (gates M4); and a **GPU-compute path** (gates M3 heavy baselines — the
   donated coding-agent lane does **not** provide training compute).
@@ -517,7 +517,7 @@ of a research benchmark as a clinical tool.
   any derived artifact is produced or redistributed; slide-label/macro images never published.
 - **Provenance + license metadata** on every record and artifact; provenance-completeness CI gate;
   derived-artifact-from-non-approved-source fails CI.
-- **No PII collected or stored**; no credentials in logs/receipts/commits (Elyos rule); access tokens
+- **No PII collected or stored**; no credentials in logs/receipts/commits (Hee-Lee Oss rule); access tokens
   for archives kept out of the repo.
 - **Reproducibility = integrity:** digest-pinned containers and lockfiles reduce supply-chain drift;
   dependency + secret scanning in CI.
@@ -569,10 +569,10 @@ per-collection terms (which can change) and re-snapshots provenance.
 ## References
 
 - Proposal / portfolio entry: `planning/ROADMAP.md` (Track 8b — `pathology-image-benchmarks`)
-- Elyos work rules, core/adapter rule & refusal guardrails: `CLAUDE.md`
+- Hee-Lee Oss work rules, core/adapter rule & refusal guardrails: `CLAUDE.md`
 - Good-deed definition & risk tiers: `docs/good-deed-definition.md`
 - Task JSON schema: `packages/schema/src/schemas.ts`
-- Sibling Elyos plans for house style: `planning/projects/revolutionary-patriots-kg/{PLAN,TASKS}.md`,
+- Sibling Hee-Lee Oss plans for house style: `planning/projects/revolutionary-patriots-kg/{PLAN,TASKS}.md`,
   `planning/projects/public-official-guide/PLAN.md`
 - Data archives: NCI Genomic Data Commons (TCGA open-access imaging); The Cancer Imaging Archive
   (TCIA; CPTAC + per-collection licenses); Grand Challenge / Camelyon (CC0)
@@ -629,8 +629,8 @@ The 25 improvements below were identified during a self-review pass and **applie
 15. **HIGH-tier boundary stated precisely.** Documented that the project deliberately avoids
     patient-facing/clinical content (which would be HIGH tier, oncologist + advocate-gated) and named
     the gate so the line is explicit if ever approached.
-16. **Agent-neutral core / Python-in-adapters separation.** Applied the Elyos core/adapter rule:
-    Python WSI/ML tooling is an isolated adapter; the Elyos-facing layer is schema + allow-list +
+16. **Agent-neutral core / Python-in-adapters separation.** Applied the Hee-Lee Oss core/adapter rule:
+    Python WSI/ML tooling is an isolated adapter; the Hee-Lee Oss-facing layer is schema + allow-list +
     provenance linter + CI.
 17. **Countable provenance "record" unit defined.** So the 100%-provenance CI gate is mechanically
     checkable (mirrors the sibling-plan convention) rather than aspirational.
@@ -652,18 +652,18 @@ The 25 improvements below were identified during a self-review pass and **applie
 24. **Datasheets + model cards as required release artifacts.** Adopted Datasheets-for-Datasets and
     Model-Cards conventions with coverage metrics, not ad-hoc READMEs.
 25. **Outcome metrics over vanity metrics.** Success is reuse/citation, reproductions, and gate
-    integrity — explicitly *not* download counts — consistent with the Elyos "delivered, not merged" bar.
+    integrity — explicitly *not* download counts — consistent with the Hee-Lee Oss "delivered, not merged" bar.
 
 ---
 
 ## Review sign-off
 
 A completeness + correctness review was performed against the PLAN_SPEC 17-section structure, the
-Elyos CLAUDE.md work rules, the good-deed definition + risk tiers, the binding cancer guardrails, and
+Hee-Lee Oss CLAUDE.md work rules, the good-deed definition + risk tiers, the binding cancer guardrails, and
 the Task JSON schema. Findings and fixes:
 
 **Completeness.** All 17 required H2 sections are present and in order. `TASKS.md` carries the
-"How these tasks map to Elyos" field mapping, one section per milestone (M0–M4) with task tables,
+"How these tasks map to Hee-Lee Oss" field mapping, one section per milestone (M0–M4) with task tables,
 per-task acceptance criteria for the 2–4 most important tasks per milestone, milestone Definitions of
 Done, a backlog, and a complete example Task JSON. Task count: **19 across M0–M4 + 7 backlog** (within
 the 12–20 target for scheduled work). *No gaps found.*

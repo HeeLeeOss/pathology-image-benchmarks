@@ -18,7 +18,7 @@
     "At least 2 collections reach status: approved in the allow-list.",
     "At least 1 approved entry is a TCGA open-access imaging cohort (with TCGA citation requirement noted) or a CC-BY TCIA/CPTAC collection (with CC-BY version recorded).",
     "Any CC0 collection (e.g. Camelyon16/17) is explicitly flagged with license: CC0 in the allow-list entry.",
-    "Zero controlled-access items (dbGaP, EGA, individual-level genomics, PHI) are approved; any ambiguous per-collection term is routed to the Elyos governance board.",
+    "Zero controlled-access items (dbGaP, EGA, individual-level genomics, PHI) are approved; any ambiguous per-collection term is routed to the Hee-Lee Oss governance board.",
     "All per-collection terms are verified at the collection level, not assumed from the source family (since TCIA terms vary per collection).",
     "Every allow-list entry carries retrieval date, archive URL, accession/collection ID, format, and the rights analysis field."
   ],

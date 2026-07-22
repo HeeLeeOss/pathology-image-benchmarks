@@ -18,7 +18,7 @@
     "The harness validates that submissions carry required metadata: split ID, seed(s), preprocessing hash, and compute provenance; missing fields cause rejection, not silent scoring.",
     "Held-out ground-truth labels are not exposed to the submitter at any point during the scoring process.",
     "The harness produces a structured result record conforming to the results schema from pathology-image-benchmarks-prov-001.",
-    "The harness is implemented in the agent-neutral core (TypeScript/ESM) or as a documented Python adapter, consistent with the Elyos architecture rule.",
+    "The harness is implemented in the agent-neutral core (TypeScript/ESM) or as a documented Python adapter, consistent with the Hee-Lee Oss architecture rule.",
     "pnpm build && pnpm test && pnpm lint pass; CI provenance gate passes on harness result records."
   ],
   "resources": [
